@@ -20,6 +20,7 @@ public class UserService {
                 .name(req.getName())
                 .email(req.getEmail())
                 .phone(req.getPhone())
+                .role(req.getRole())
                 .build();
         return userRepository.save(user);
     }

@@ -1,6 +1,7 @@
 package com.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.Instant;
@@ -26,6 +27,11 @@ public class User {
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 16)
+    @NotNull(message = "role is required")
+    private Role role = Role.USER;
 
     @PrePersist
     public void prePersist() {
